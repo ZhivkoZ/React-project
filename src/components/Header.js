@@ -46,7 +46,15 @@ export class Header extends Component {
                                 tag={RRNavLink}
                                 exact to="/"
                                 active className="active">
-                                Home
+                                News
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                tag={RRNavLink}
+                                exact to="/"
+                                active className="active">
+                                Students
                         </NavLink>
                         </NavItem>
                     </Nav>

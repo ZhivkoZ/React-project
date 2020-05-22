@@ -10,6 +10,7 @@
     "apollo-boost": "^0.4.7",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "carousel": "0.0.3",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "newsapi": "^2.4.0",
