@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Register from './Register';
+import Login from './Login';
+import UserMenu from './UserMenu';
+import Logout from './Logout';
+
 import {
     Collapse,
     Navbar,
@@ -29,14 +34,6 @@ export class Header extends Component {
     render() {
         return <Navbar color="info" dark expand="md">
             <Container>
-                <NavLink
-                    tag={RRNavLink}
-                    className="navbar-brand"
-                    exact to='/'>
-                    <i class="fa fa-broadcast-tower"></i>
-                    <span className="project-name">Student App</span>
-                </NavLink>
-
                 <NavbarToggler onClick={this.toggleIsOpen} />
 
                 <Collapse isOpen={this.state.isOpen} navbar>
@@ -44,9 +41,17 @@ export class Header extends Component {
                         <NavItem>
                             <NavLink
                                 tag={RRNavLink}
+                                className="navbar-brand"
+                                exact to='/'>
+                                <span className="project-name">Home</span>
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                tag={RRNavLink}
                                 exact to="/"
                                 active className="active">
-                                News
+                                NewsList
                         </NavLink>
                         </NavItem>
                         <NavItem>
@@ -54,9 +59,20 @@ export class Header extends Component {
                                 tag={RRNavLink}
                                 exact to="/"
                                 active className="active">
-                                Students
+                                StudentsList
                         </NavLink>
                         </NavItem>
+
+                        {this.props.token ? (
+                            <UserMenu />
+                        ) : (
+                                <>
+                                    <Register buttonLabel="Register" />
+                                    <Login buttonLabel="Login" />
+                                    <Logout buttonLabel="Logout"/>
+                                </>
+                            )}
+
                     </Nav>
                 </Collapse>
 

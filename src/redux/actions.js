@@ -73,6 +73,7 @@ export const editUser = (variables, responseFields = "_id email username userTyp
     try {
         const response = await graphQLService.editUser(variables, responseFields);
         dispatch(getCurrentUser());
+        dispatch(saveToken(response.data.editUser));
     } catch(e){
         console.log(e);
         dispatch(setGraphQLError({request: "editUser", errors: []}))
@@ -161,3 +162,30 @@ export function deleteStudentFromStore(student){
 }
 
 /****************** */
+
+function requestLogin(creds) {
+    return {
+      type: types.LOGIN_REQUEST,
+      isFetching: true,
+      isAuthenticated: false,
+      creds
+    }
+  }
+
+  function receiveLogin(user) {
+    return {
+      type: types.LOGIN_SUCCESS,
+      isFetching: false,
+      isAuthenticated: true,
+      id_token: user.id_token
+    }
+  }
+  
+  function loginError(message) {
+    return {
+      type: types.LOGIN_FAILURE,
+      isFetching: false,
+      isAuthenticated: false,
+      message
+    }
+  }
